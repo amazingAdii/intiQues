@@ -3,7 +3,6 @@ package com.maddy.adiii.interviewquestion;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,17 +16,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.io.File;
 import java.util.ArrayList;
 
 //TODO: put onclick on finish task n unfinish.(DONE)
@@ -64,6 +58,21 @@ public class MainActivity extends AppCompatActivity {
 		emptyViewContainer=(LinearLayout)findViewById(R.id.empty_view_container);
 		//---------------------
 		allSpinnerList=(Spinner)findViewById(R.id.all_Spinner_List);
+		
+		sharedPreferences = getSharedPreferences("mypref",MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPreferences.edit(); // to avoid repeated values to be inserted when call the oncreate database .
+		
+		if(!sharedPreferences.contains("isFirstTime")){
+			editor.putBoolean("isFirstTime", false);
+			editor.commit();
+			
+			myDb.insertTaskData("Default");
+			myDb.insertTaskData("Personal");
+			myDb.insertTaskData("Shopping");
+			myDb.insertTaskData("Work");
+			
+			Toast.makeText(this, "First time data added", Toast.LENGTH_SHORT).show();
+		}
 
         tasklist=new ArrayList<>();
         getDataToSpinner();
@@ -124,20 +133,6 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 		//---------------------
-		sharedPreferences = getSharedPreferences("mypref",MODE_PRIVATE);
-		SharedPreferences.Editor editor = sharedPreferences.edit(); // to avoid repeated values to be inserted when call the oncreate database .
-
-		if(!sharedPreferences.contains("isFirstTime")){
-			editor.putBoolean("isFirstTime", false);
-			editor.commit();
-
-			myDb.insertTaskData("Default");
-			myDb.insertTaskData("Personal");
-			myDb.insertTaskData("Shopping");
-			myDb.insertTaskData("Work");
-
-			Toast.makeText(this, "First time data added", Toast.LENGTH_SHORT).show();
-		}
 
 		//-------------------
 		exampleItems=new ArrayList<>();

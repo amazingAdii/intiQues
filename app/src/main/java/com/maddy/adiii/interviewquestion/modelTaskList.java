@@ -1,10 +1,12 @@
 package com.maddy.adiii.interviewquestion;
 
-import androidx.annotation.NonNull;
-
 public class modelTaskList {
     private int id;
     private String taskTitle;
+    
+    public modelTaskList(){
+    
+    }
 
     public modelTaskList(int id, String taskTitle) {
         this.id = id;
@@ -34,4 +36,14 @@ public class modelTaskList {
     public String toString() {
         return taskTitle;
     }
+    
+//    @Override
+//    public boolean equals(Object obj) {
+//        if(obj instanceof  modelTaskList){
+//            modelTaskList m = (modelTaskList) obj;
+//            return m.getId() == this.id;
+//        }else{
+//            return false;
+//        }
+//    }
 }

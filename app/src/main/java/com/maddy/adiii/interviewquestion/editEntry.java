@@ -185,16 +185,33 @@ public class editEntry extends AppCompatActivity {
             int id = res.getInt(0);
             String title = res.getString(1);
             String dated = res.getString(2);
-            int task_id = res.getInt(3);
+            final int task_id = res.getInt(3);
             status = res.getString(4);
 
             editTitle.setText(title);
             editDated.setText(dated);
-            int pos = spinnerAdapter.getPosition(tasklist.get(task_id));
-            Toast.makeText(this, pos, Toast.LENGTH_SHORT).show();
-            spinnerEdit.setSelection(pos);
-            selectedSpinnerId = task_id;
-
+            //Toast.makeText(this, tasklist.get(task_id-1).toString(), Toast.LENGTH_SHORT).show();
+            
+            boolean checkElement = false;
+            for(int i =0; i< tasklist.size(); i++){
+                modelTaskList m = tasklist.get(i);
+                if(m.getId() == task_id-1){
+                    checkElement=true;
+                }
+            }
+ 
+            
+            if(checkElement){
+                int pos = spinnerAdapter.getPosition(tasklist.get(task_id-1));
+                //Toast.makeText(this, pos, Toast.LENGTH_SHORT).show();
+                spinnerEdit.setSelection(pos);
+                selectedSpinnerId = task_id;
+            }else {
+                //int pos = spinnerAdapter.getPosition(tasklist.get(task_id - 1));
+                //Toast.makeText(this, pos, Toast.LENGTH_SHORT).show();
+                spinnerEdit.setSelection(0);
+                selectedSpinnerId = 0;
+            }
         }
     }
 
