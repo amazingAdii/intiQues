@@ -1,3 +1,12 @@
 <resources>
-  <string name="app_name">Interview Question</string>
+    <string name="app_name">TODO App</string>
+    <string name="app_description">Memorize is a smart task list manager.\n It is user friendly with lot of great features.\n Use it anywhere, anytime, at your work, in your free time.\n
+App is free to download and use.\n
+
+Key features :\n
+  - User friendly.\n
+  - Quick navigation of tasks.\n
+  - Make your custom tasks group.\n</string>
+    <string name="contact_details">Developed by Priyal Kulkarni.\n
+        Email : priyalkulkarni1520@gmail.com\n</string>
 </resources>

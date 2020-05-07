@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:background="#F8F8F8"
+    tools:context=".AddNewTodo">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_height="wrap_content">
+
+
+        <EditText
+            android:padding="10dip"
+            android:background="@drawable/edittext_circular"
+            android:drawablePadding="10dip"
+            android:drawableStart="@drawable/trueicon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/did"
+            android:hint="Task"/>
+
+        <EditText
+            android:focusable="false"
+            android:clickable="true"
+            android:editable="false"
+            android:enabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dtxt"
+            android:drawablePadding="10dip"
+            android:padding="10dip"
+            android:textColor="#000000"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/edittext_circular"
+            android:drawableStart="@drawable/calendericon"
+            android:hint="Due date"
+            />
+
+
+    
+
+<!--    <Button-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/datebtn"-->
+<!--        android:backgroundTint="#FFFFFF"-->
+<!--        android:icon="@drawable/calendericon"-->
+<!--        />-->
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Select Task List"
+    android:textSize="14dp"
+    android:layout_marginTop="10dip"
+    android:fontFamily="@font/poppins_semibold"
+    android:textColor="#000000"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="@drawable/edittext_circular"
+            android:layout_width="0.0dip"
+            android:layout_weight="7"
+            android:layout_height="wrap_content">
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:id="@+id/spinner_task_list"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/add_new_list"
+            android:gravity="center"
+          android:layout_marginStart="15dp"
+            android:drawableTint="@color/colorPrimary"
+            android:drawableStart="@drawable/addspinnericon"
+            android:layout_weight="1"
+            android:layout_width="0.0dip"
+            android:layout_height="40dip"/>
+
+    </LinearLayout>
+
+
+    <!-- todo: this this into floting actionbar -->
+<!--    <Button-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Save"-->
+<!--        android:id="@+id/savedetailsbtn"-->
+<!--        android:layout_gravity="center"-->
+<!--        />-->
+</LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/trueadd1icon"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/savedetailsbtn"
+        />
+
+</RelativeLayout>

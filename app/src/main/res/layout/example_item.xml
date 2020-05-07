@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:id="@+id/cardview_Id"
+    android:layout_marginTop="2.5dip"
+    android:layout_marginBottom="2.5dip"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="3dp"
+    android:id="@+id/liner1"
+    android:layout_marginBottom="7dp"
+    android:layout_margin="4dp">
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+
+        android:layout_marginRight="12dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:id="@+id/check_status"
+        android:layout_gravity="center"/>
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title :"
+        android:id="@+id/Ttxt"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_bold"
+        />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#706F6F"
+                android:fontFamily="@font/poppins_medium"
+                android:text="DUE DATE : "/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Due Date :"
+        android:id="@+id/Dtxt"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="#706F6F"
+        />
+
+        </LinearLayout>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="5dp"-->
+<!--        android:text=" "/>-->
+</LinearLayout>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
