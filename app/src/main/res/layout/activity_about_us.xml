@@ -52,6 +52,7 @@
 
 
     <com.google.android.gms.ads.AdView
+      android:visibility="gone"
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView_new"
         android:layout_gravity="center"
@@ -63,6 +64,13 @@
         ads:adSize="BANNER"
         ads:adUnitId="@string/add_unit_id">
     </com.google.android.gms.ads.AdView>
+
+  <TextView
+    android:text="Version 1.0"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="40dip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 </LinearLayout>
 
 

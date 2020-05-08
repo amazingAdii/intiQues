@@ -143,7 +143,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/add"
         android:layout_above="@+id/adView"
-
         android:layout_alignParentEnd="true"
         android:layout_margin="20dp"
             android:id="@+id/button"

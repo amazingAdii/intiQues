@@ -16,11 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -206,21 +204,13 @@ public class MainActivity extends AppCompatActivity {
 				exampleItems.add(e);
 
             }
-			//showmsg("data",buffer.toString());
 			db_todo_list.setAdapter(adapter);
 
 
 		}
 	}
 
-	public void showmsg(String titlenew,String msg){
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(titlenew);
-        builder.setMessage(msg);
-        builder.show();
-    }
-    public void open2ndActivity(){
+          public void open2ndActivity(){
 		Intent intent=new Intent(this,AddNewTodo.class);
 		startActivity(intent);
 	}
@@ -232,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
 		inflater.inflate(R.menu.main_menu, menu);
 		return true;
 	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()){
@@ -254,7 +245,8 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 	}
-    private void getDataToSpinner(){
+	
+          private void getDataToSpinner(){
         Cursor c=myDb.getTaskListData();
         if(c.getCount()==0){
             Toast.makeText(this, "Nothing found", Toast.LENGTH_SHORT).show();
@@ -270,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void rateMe(){
+          public void rateMe(){
 	    try{
 	        startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("market://details?id="+"com.android.crome")));
@@ -288,5 +280,17 @@ public class MainActivity extends AppCompatActivity {
 		sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Memorize");
 		sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
 		startActivity(Intent.createChooser(sharingIntent, "Share via"));
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		getDataToSpinner();
+	}
+	
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		getDataToSpinner();
 	}
 }

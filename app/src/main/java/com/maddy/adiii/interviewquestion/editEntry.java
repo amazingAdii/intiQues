@@ -72,7 +72,7 @@ public class editEntry extends AppCompatActivity {
 
         Bundle extras=getIntent().getExtras();
         taskId= extras.getInt("id");
-        Toast.makeText(this, String.valueOf(taskId), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, String.valueOf(taskId), Toast.LENGTH_SHORT).show();
 
         editTitle=(EditText) findViewById(R.id.edit_title);
         editDated=(EditText) findViewById(R.id.edit_dated);
@@ -109,6 +109,7 @@ public class editEntry extends AppCompatActivity {
                             Toast.makeText(editEntry.this, "Enter something", Toast.LENGTH_SHORT).show();
                         }else{
                             myDb.insertTaskData(titletask);
+                            getDataToSpinner();
                             dialog.dismiss();
                         }
                     }
@@ -124,7 +125,7 @@ public class editEntry extends AppCompatActivity {
 
         spinnerAdapter=new ArrayAdapter<modelTaskList>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 tasklist
         );
 
@@ -208,16 +209,18 @@ public class editEntry extends AppCompatActivity {
             //Toast.makeText(this, tasklist.get(task_id-1).toString(), Toast.LENGTH_SHORT).show();
             
             boolean checkElement = false;
+            int pos=0;
             for(int i =0; i< tasklist.size(); i++){
                 modelTaskList m = tasklist.get(i);
-                if(m.getId() == task_id-1){
+                if(m.getId() == task_id){
+                	pos = i;
                     checkElement=true;
                 }
             }
  
             
             if(checkElement){
-                int pos = spinnerAdapter.getPosition(tasklist.get(task_id-1));
+                //int pos = spinnerAdapter.getPosition(tasklist.get(task_id-1));
                 //Toast.makeText(this, pos, Toast.LENGTH_SHORT).show();
                 spinnerEdit.setSelection(pos);
                 selectedSpinnerId = task_id;
