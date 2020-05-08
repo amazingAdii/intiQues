@@ -14,6 +14,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -41,7 +47,21 @@ import java.util.List;
             final ExampleItem user = todo_list.get(position);
             myViewHolder.Title.setText(user.getTtxt());
             myViewHolder.Dated.setText(user.getDtxt());
-
+            String dueDate_text=user.getDtxt();
+            try {
+                SimpleDateFormat format=new SimpleDateFormat("EEEE, MMM dd yyyy");
+                Date dueDate=format.parse(dueDate_text);
+                Date currentDate=new Date();
+                String cureentDateText=format.format(currentDate);
+                currentDate=format.parse(cureentDateText);
+                if(currentDate.after(dueDate)){
+                    myViewHolder.overDueText.setVisibility(View.VISIBLE);
+                }else{
+                    myViewHolder.overDueText.setVisibility(View.GONE);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             if(user.getCheck_status().equals("true")){
                 myViewHolder.check_status.setChecked(true);
                 //myViewHolder.Dated.setPaintFlags(myViewHolder.Dated.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -90,6 +110,7 @@ import java.util.List;
             public TextView Title,Dated;
             public CheckBox check_status;
             public CardView cardview_Id;
+            public TextView overDueText;
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -97,6 +118,7 @@ import java.util.List;
                 Title= (TextView)itemView.findViewById(R.id.Ttxt);
                 Dated = (TextView)itemView.findViewById(R.id.Dtxt);
                 check_status=(CheckBox)itemView.findViewById(R.id.check_status);
+                overDueText=(TextView)itemView.findViewById(R.id.overdue_text);
             }
         }
 
